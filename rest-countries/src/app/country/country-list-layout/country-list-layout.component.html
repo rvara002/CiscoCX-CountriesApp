@@ -1,0 +1,10 @@
+<mat-toolbar color="primary" class="country-list-toolbar">
+  <span class="flex-spacer"></span>
+  <a mat-icon-button [routerLink]="[ './grid' ]" routerLinkActive="active">
+    <mat-icon>view_module</mat-icon>
+  </a>
+  <a mat-icon-button [routerLink]="[ './table' ]" routerLinkActive="active">
+    <mat-icon>view_list</mat-icon>
+  </a>
+</mat-toolbar>
+<router-outlet></router-outlet>

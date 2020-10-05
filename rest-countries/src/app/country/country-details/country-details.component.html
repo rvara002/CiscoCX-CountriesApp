@@ -1,0 +1,173 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span>Back to Country List</span>
+</mat-toolbar>
+<div fxLayout="column" fxLayoutAlign="center center">
+  <mat-card class="mat-elevation-z8" fxFlex>
+    <mat-card-header>
+      <mat-card-title>{{country.name}}</mat-card-title>
+      <mat-card-subtitle>{{country.region}}</mat-card-subtitle>
+    </mat-card-header>
+    <div fxLayout="row" fxLayout.xs="column">
+      <div fxFlex.md="35%" class="card-image">
+        <img mat-card-image [src]="country.flag" [alt]="country.name">
+      </div>
+      <div fxFlex.md="65%" class="card-content">
+        <mat-card-content>
+          <p>
+            <!-- Name -->
+            <mat-form-field class="country-input">
+              <input matInput placeholder="Name" [value]="country.name" readonly>
+            </mat-form-field>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <!-- Alpha2Code & Alpha3Code -->
+            <mat-form-field class="country-input-sm">
+              <input matInput placeholder="Alpha2Code" [value]="country.alpha2Code" readonly>
+            </mat-form-field>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field class="country-input-sm">
+              <input matInput placeholder="Alpha3Code" [value]="country.alpha3Code" readonly>
+            </mat-form-field>
+          </p>
+
+          <p>
+            <!-- Capital -->
+            <mat-form-field class="country-input">
+              <input matInput placeholder="Capital" [value]="country.capital" readonly>
+              <mat-icon matSuffix>location_city</mat-icon>
+            </mat-form-field>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <!-- AltSpellings -->
+            <mat-form-field class="country-input">
+              <input matInput placeholder="Alt Spellings" [value]="country.altSpellings" readonly>
+            </mat-form-field>
+          </p>
+
+          <p>
+            <!-- Region -->
+            <mat-form-field class="country-input">
+              <input matInput placeholder="Region" [value]="country.region" readonly>
+              <mat-icon matSuffix>location_on</mat-icon>
+            </mat-form-field>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <!-- Subregion -->
+            <mat-form-field class="country-input">
+              <input matInput placeholder="Subregion" [value]="country.subregion" readonly>
+            </mat-form-field>
+          </p>
+
+          <p>
+            <!-- Population -->
+            <mat-form-field class="country-input">
+              <input matInput placeholder="Population" [value]="country.population" readonly>
+            </mat-form-field>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <!-- LatLng -->
+            <mat-form-field class="country-input">
+              <input matInput placeholder="Lat/Lng" [value]="country.latlng" readonly>
+              <mat-icon matSuffix>location_searching</mat-icon>
+            </mat-form-field>
+          </p>
+
+          <p>
+            <!-- Demonym -->
+            <mat-form-field class="country-input-sm">
+              <input matInput placeholder="Demonym" [value]="country.demonym" readonly>
+            </mat-form-field>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <!-- Area -->
+            <mat-form-field class="country-input-sm">
+              <input matInput placeholder="Area" [value]="country.area" readonly>
+              <mat-icon matSuffix>explore</mat-icon>
+            </mat-form-field>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <!-- Gini -->
+            <mat-form-field class="country-input-sm">
+              <input matInput placeholder="Gini" [value]="country.gini" readonly>
+            </mat-form-field>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+
+          <!-- Timezones -->
+          <mat-form-field class="country-input">
+            <input matInput placeholder="Demonym" [value]="country.timezones" readonly>
+            <mat-icon matSuffix>access_time</mat-icon>
+          </mat-form-field>
+
+          <p>
+            <!-- Borders -->
+            <mat-form-field class="country-input">
+              <input matInput placeholder="Borders" [value]="country.borders" readonly>
+            </mat-form-field>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <!-- NativeName -->
+            <mat-form-field class="country-input-sm">
+              <input matInput placeholder="NativeName" [value]="country.nativeName" readonly>
+            </mat-form-field>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <!-- NumericCodes -->
+            <mat-form-field class="country-input-sm">
+              <input matInput placeholder="Numeric Code" [value]="country.numericCode" readonly>
+            </mat-form-field>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+          <mat-divider [inset]="true"></mat-divider>
+          <mat-accordion>
+            <mat-expansion-panel class="country-input-xl">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <mat-icon matSuffix>g_translate</mat-icon>
+                  &nbsp;Translation
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <mat-list *ngFor="let translate of getKeyValueObject('translations')">
+                <mat-list-item>{{translate.key}}: {{translate.value}}: </mat-list-item>
+                <mat-divider></mat-divider>
+              </mat-list>
+
+            </mat-expansion-panel>
+            <mat-expansion-panel class="country-input-xl">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <mat-icon matSuffix>language</mat-icon>
+                  &nbsp;Language
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <mat-list *ngFor="let language of getKeyValueObject('languages')">
+                <mat-list-item>{{language.key}}: {{language.value}}</mat-list-item>
+                <mat-divider></mat-divider>
+              </mat-list>
+
+            </mat-expansion-panel>
+            <mat-expansion-panel class="country-input-xl">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <mat-icon matSuffix>monetization_on</mat-icon>
+                  &nbsp;Currencies
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <mat-list *ngFor="let currencie of getKeyValueObject('currencies')">
+                <mat-list-item>{{currencie.key}}: {{currencie.value}}</mat-list-item>
+                <mat-divider></mat-divider>
+              </mat-list>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-card-content>
+      </div>
+    </div>
+    <mat-card-actions>
+    </mat-card-actions>
+  </mat-card>
+</div>

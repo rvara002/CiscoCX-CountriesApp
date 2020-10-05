@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" class="app-toolbar">
+  <button mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Countries App</span>
+  <span class="flex-spacer"></span>
+  <button mat-icon-button (click)="isDark = !isDark" aria-label="Select a theme"
+    matTooltip="Select a theme for the app">
+    <mat-icon>format_color_fill</mat-icon>
+  </button>
+  <button mat-button (click)="isDark = !isDark">{{isDark ? 'Light' : 'Dark'}} Theme</button>
+</mat-toolbar>
+<main class="main-content">
+  <ng-content></ng-content>
+</main>
+<!-- <mat-sidenav-container class="demo-container">
+  <mat-sidenav #start role="navigation">
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    
+  </mat-sidenav-content>
+
+</mat-sidenav-container> -->

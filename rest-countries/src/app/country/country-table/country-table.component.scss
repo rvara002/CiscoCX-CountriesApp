@@ -1,0 +1,15 @@
+.country-table-container {
+  height: 400px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-name, .mat-column-population, .mat-column-region {
+  width: 20%;
+}
+.mat-column-subregion, .mat-column-capital {
+  width: 20%;
+}

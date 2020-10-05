@@ -1,0 +1,18 @@
+.content {
+  padding-top: 56px;
+  margin: 0 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 599px) {
+  .content {
+    margin: 0 15px;
+  }
+}
+
+.search-form-field {
+  margin: 24px 40px 0;
+  max-width: 450px;
+  width: 100%
+}
